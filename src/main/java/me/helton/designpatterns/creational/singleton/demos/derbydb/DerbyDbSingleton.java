@@ -1,14 +1,14 @@
-package me.helton.designpatterns.creational.singleton.demos.dbderby;
+package me.helton.designpatterns.creational.singleton.demos.derbydb;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DbSingleton {
-    private static DbSingleton instance = null;
+public class DerbyDbSingleton {
+    private static DerbyDbSingleton instance = null;
     private Connection conn = null;
 
-    private DbSingleton() {
+    private DerbyDbSingleton() {
         try {
             DriverManager.registerDriver(new org.apache.derby.jdbc.EmbeddedDriver());
         } catch (SQLException e) {
@@ -16,11 +16,11 @@ public class DbSingleton {
         }
     }
 
-    public static DbSingleton getInstance() {
+    public static DerbyDbSingleton getInstance() {
         if (instance == null) {
-            synchronized (DbSingleton.class) {
+            synchronized (DerbyDbSingleton.class) {
                 if (instance == null) {
-                    instance = new DbSingleton();
+                    instance = new DerbyDbSingleton();
                 }
             }
         }
@@ -29,7 +29,7 @@ public class DbSingleton {
 
     public Connection getConnection() {
         if (conn == null) {
-            synchronized (DbSingleton.class) {
+            synchronized (DerbyDbSingleton.class) {
                 if (conn == null) {
                     String dbUrl = "jdbc:derby:memory:helton/dbsingleton;create=true";
                     try {

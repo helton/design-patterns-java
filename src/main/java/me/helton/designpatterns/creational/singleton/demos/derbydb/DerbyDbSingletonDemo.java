@@ -1,4 +1,4 @@
-package me.helton.designpatterns.creational.singleton.demos.dbderby;
+package me.helton.designpatterns.creational.singleton.demos.derbydb;
 
 import com.google.common.base.Stopwatch;
 
@@ -6,9 +6,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DbSingletonDemo {
+public class DerbyDbSingletonDemo {
     public static void main(String[] args) {
-        DbSingleton instance = DbSingleton.getInstance();
+        DerbyDbSingleton instance = DerbyDbSingleton.getInstance();
 
         Stopwatch stopwatch = Stopwatch.createStarted();
         Connection conn = instance.getConnection();
